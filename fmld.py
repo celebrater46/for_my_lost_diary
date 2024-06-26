@@ -45,11 +45,26 @@ def open_docx(file_name):
 
 # open_docx()
 
+def convert_filenames(arr):
+    new_arr = []
+    for f in arr:
+        new_title = f"{f[:6]}.txt"
+        if new_title in new_arr:
+            print(f"ERROR: The title [{new_title}] already exists.")
+            break
+        else:
+            new_arr.append(new_title)
+            # print(f"Added {new_title}")
+    return new_arr
+
 def for_my_lost_diary():
     fs = get_filenames()
+    converted_fs = convert_filenames(fs)
+    # print(converted_fs)
     # for f in fs:
 
 
 # get_filenames()
-# print(get_random_clock())
-print(create_list_line("テストタイトル", "190703"))
+# print(get_filenames())
+# print(create_list_line("テストタイトル", "190703"))
+for_my_lost_diary()

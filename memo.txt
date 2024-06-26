@@ -1,0 +1,6 @@
+If your backup files are DOCX (Google Document), convert them using "docx_to_txt".
+
+Functions I need:
+    Convert title (190601.txt -> 20190601.txt)
+    Get titles from line 1
+    Create the list (4|5|20240624|Reaper Preset Organizer について|Reaper Preset Organizer|2024-06-24_00:43:24|0)
