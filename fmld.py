@@ -3,6 +3,7 @@ import os
 import random
 
 INPUT_DIL = "input"
+IMG_PATH = "output/img"
 
 def get_filenames():
     # dir_path = "input"
@@ -48,7 +49,7 @@ def open_docx(file_name):
 def convert_filenames(arr):
     new_arr = []
     for f in arr:
-        new_title = f"{f[:6]}.txt"
+        new_title = f"20{f[:6]}.txt"
         if new_title in new_arr:
             print(f"ERROR: The title [{new_title}] already exists.")
             break
@@ -57,9 +58,15 @@ def convert_filenames(arr):
             # print(f"Added {new_title}")
     return new_arr
 
+def mkdir_img(arr):
+    for f in arr:
+        path = f"{IMG_PATH}/{f[:8]}"
+        os.mkdir(path)
+
 def for_my_lost_diary():
     fs = get_filenames()
     converted_fs = convert_filenames(fs)
+    mkdir_img(converted_fs)
     # print(converted_fs)
     # for f in fs:
 
