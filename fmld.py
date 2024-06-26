@@ -1,18 +1,55 @@
 import docx
+import os
+import random
 
-def say_hello():
-    print("Hello world!!!!!!!!!")
+INPUT_DIL = "input"
 
-say_hello()
+def get_filenames():
+    # dir_path = "input"
+    file_names = [
+        f for f in os.listdir(INPUT_DIL) if os.path.isfile(os.path.join(INPUT_DIL, f))
+    ]
+    # print(file_names)
+    return file_names
+
+def add_zero(num):
+    if num < 10:
+        return f"0{num}"
+    else:
+        return str(num)
+
+def get_random_clock():
+    h = add_zero(random.randrange(23))
+    m = add_zero(random.randrange(59))
+    s = add_zero(random.randrange(59))
+    # print(f"{h}:{m}:{s}")
+    return f"{h}:{m}:{s}"
+
+def create_list_line(title, file_name):
+    hms = get_random_clock()
+    date6 = file_name.replace(".docx", "") # 240625
+    tempstr = f"6|6|20{date6}|{title}|ENGLISH_TITLE|20{date6[:2]}-{date6[2:4]}-{date6[4:6]}_{hms}|0\n"
+    # 4|5|20240624|Reaper Preset Organizer について|Reaper Preset Organizer|2024-06-24_00:43:24|0
+    # print(tempstr)
+    return tempstr
 
 def create_txt(doc):
-    f = open("files/converted.txt", "w", encoding='utf-8')
+    f = open("output/converted.txt", "w", encoding='utf-8')
     for paragraph in doc.paragraphs:
         f.write(paragraph.text + "\n")
     f.close()
 
-def open_docx():
-    document = docx.Document("files/test.docx")
+def open_docx(file_name):
+    document = docx.Document(f"{INPUT_DIL}/{file_name}")
     create_txt(document)
 
-open_docx()
+# open_docx()
+
+def for_my_lost_diary():
+    fs = get_filenames()
+    # for f in fs:
+
+
+# get_filenames()
+# print(get_random_clock())
+print(create_list_line("テストタイトル", "190703"))
