@@ -4,3 +4,5 @@ Functions I need:
     Convert title (190601.txt -> 20190601.txt)
     Get titles from line 1
     Create the list (4|5|20240624|Reaper Preset Organizer について|Reaper Preset Organizer|2024-06-24_00:43:24|0)
+
+Resolve the problem of no title. Use "test_print_titles()"
